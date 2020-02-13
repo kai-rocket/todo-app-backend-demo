@@ -1,33 +1,24 @@
-var cookieParser = require("cookie-parser");
+import cookieParser from "cookie-parser";
 import express from "express";
 import createError from "http-errors";
-var logger = require("morgan");
-var path = require("path");
+import logger from "morgan";
+import path from "path";
 
 import { createTodo } from "./controllers/todoController";
 
 var app = express();
 
-// 3 environments that people use in real companies
-// development, staging, and production
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/', (req, res) => {
   res.send('we have succesfully hit the root endpoint');
 });
 
-app.post("/create-todo", (req, res) => {
-  // Biz logic goes here
-  createTodo(req, res);
-});
-
-// app.put("/update-todo", (req, res) => {
-//   updateTodo(req, res);
-// });
+// Create a new todo with value provided by user
+app.post("/create-todo", (req, res) => createTodo(req, res));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -40,7 +31,7 @@ app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  // render the error page
+  // respond with the error message
   res.status(err.status || 500);
   res.send(err.message);
 });

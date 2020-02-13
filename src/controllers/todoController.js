@@ -1,10 +1,10 @@
 import { Todo } from "../db/models";
 
+/**
+ * Create a Todo and save it in the DB
+ */
 export const createTodo = (req, res) => {
-  // Something from the user
   const value = req.body.value;
-  console.log(value);
-  console.log(req.body);
   return Todo.create({
     value,
     completed: false
