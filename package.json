@@ -1,5 +1,5 @@
 {
-  "name": "express-generator-demo",
+  "name": "todo-app-backend-demo",
   "version": "0.0.0",
   "private": true,
   "engines": {
