@@ -2,7 +2,6 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import createError from "http-errors";
 import logger from "morgan";
-import path from "path";
 
 import { createTodo } from "./controllers/todoController";
 
