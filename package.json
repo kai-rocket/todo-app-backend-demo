@@ -1,0 +1,33 @@
+{
+  "name": "express-generator-demo",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": "12.x"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run build-babel",
+    "build-babel": "babel -d ./build ./src -s --copy-files",
+    "clean": "rm -rf build",
+    "start": "npm run build && node ./build/bin/www",
+    "start:dev": "nodemon --exec babel-node ./src/bin/www"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pg": "^7.18.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.4"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.8.4",
+    "nodemon": "^2.0.2",
+    "sequelize-cli": "^5.5.1"
+  }
+}
