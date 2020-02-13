@@ -1,7 +1,9 @@
 import cookieParser from "cookie-parser";
+import "core-js/stable";
 import express from "express";
 import createError from "http-errors";
 import logger from "morgan";
+import "regenerator-runtime/runtime";
 
 import { createTodo } from "./controllers/todoController";
 
