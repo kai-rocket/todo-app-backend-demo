@@ -9,7 +9,7 @@ export const createTodo = async (req, res) => {
     value,
     completed: false
   })
-  res.send({ todoId: todo.id });
+  res.json({ todoId: todo.id });
 };
 
 /**
@@ -17,7 +17,14 @@ export const createTodo = async (req, res) => {
  */
 export const retrieveTodos = async (req, res) => {
   const todos = await Todo.findAll();
-  res.send(todos);
+  // Strip todos so that we send minimal information to client
+  const strippedTodos = todos.map(todo => ({
+    id: todo.id,
+    value: todo.value,
+    completed: todo.completed
+  }));
+  console.log(strippedTodos);
+  res.json(strippedTodos);
 };
 
 /**
