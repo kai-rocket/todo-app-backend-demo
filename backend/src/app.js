@@ -1,5 +1,6 @@
 import cookieParser from "cookie-parser";
 import "core-js/stable";
+import cors from 'cors'
 import express from "express";
 import createError from "http-errors";
 import logger from "morgan";
@@ -10,6 +11,7 @@ import todoRoutes from './routes/todoRoutes';
 var app = express();
 
 app.use(logger("dev"));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
