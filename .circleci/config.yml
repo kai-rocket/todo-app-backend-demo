@@ -9,6 +9,8 @@ jobs:
     steps:
       - checkout
       - node/with-cache:
+          cache-key: frontend/package.json
+          dir: ~/project/frontend/node_modules
           steps:
             - run:
                 command: npm install
