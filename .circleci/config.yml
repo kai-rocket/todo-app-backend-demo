@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@1.1.6
 jobs:
-  build-and-test:
+  build-and-test-frontend:
     # Executor is the environment in which my job is running
     executor:
       name: node/default
@@ -10,9 +10,15 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - run: npm install
-            - run: npm test
+            - run:
+                command: npm install
+                working_directory: frontend
+            - run:
+                command: npm test
+                working_directory: frontend
+  # build-and-test-backend:
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+  build-and-test:
+    jobs:
+      - build-and-test-frontend
+      # - build-and-test-backend
